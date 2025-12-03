@@ -2,6 +2,15 @@
 name = "agenda-rs"
 version = "0.1.0"
 edition = "2024"
+authors = ["Raoni Silva <raoni.silvestre@hotmail.com>"]
+description = "A lightweight, stateful job queue for Rust backed by PostgreSQL with sqlx. Inspired by AgendaJS."
+license = "MIT"
+repository = "https://github.com/RaoniSilvestre/agenda-rs"
+readme = "README.md"
+keywords = ["job-queue", "cron", "postgres", "scheduler", "background-jobs"]
+categories = ["asynchronous", "database"]
+
+
 
 [dependencies]
 async-trait = "0.1.89"
