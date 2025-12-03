@@ -1,0 +1,6 @@
+- [ ] Add proper logging
+- [ ] Test with more real use cases
+- [ ] Split logic and data access layer (DAL)
+- [ ] Add documentation
+- [ ] Maybe job receives an &mut self?
+- [ ] Add examples
