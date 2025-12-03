@@ -225,7 +225,7 @@ impl Agenda {
                     sleep(Duration::from_secs(15)).await;
                 }
                 Err(e) => {
-                    eprintln!("❌ Database error polling jobs: {e:?}");
+                    eprintln!("Database error polling jobs: {e:?}");
                     sleep(Duration::from_secs(5)).await;
                 }
             }
@@ -267,21 +267,21 @@ impl Agenda {
         if job.next_run_at > now {
             let wait_time = (job.next_run_at - now).to_std().unwrap_or(Duration::ZERO);
             println!(
-                "⏳ Job '{}' scheduled. Waiting {:?}...",
+                "Job '{}' scheduled. Waiting {:?}...",
                 job.job_name, wait_time
             );
             sleep(wait_time).await;
         }
 
         println!(
-            "⚙️ Executing Job {} at the time {}",
+            "Executing Job {} at the time {}",
             job.job_name,
             chrono::Utc::now()
         );
         self.execute(&job.job_name, job.payload.clone()).await?;
 
         if let Err(e) = self.reschedule_job(&job).await {
-            eprintln!("❌ Failed to reschedule job {}: {:?}", job.job_name, e);
+            eprintln!("Failed to reschedule job {}: {:?}", job.job_name, e);
         }
 
         Ok(())
@@ -321,7 +321,6 @@ use std::fmt;
 
 impl fmt::Debug for Agenda {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        // Start the struct builder
         let mut d = f.debug_struct("Agenda");
 
         d.field("conn", &self.conn);
